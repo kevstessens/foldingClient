@@ -1,4 +1,9 @@
 {
+"login.title": "Iniciar sesión",
+"login.user": "Usuario",
+"login.password": "Contraseña",
+"login.login": "Ingresar",
+"login.invalidUserPass": "Usuario o contraseña incorrectos",
 "countdown.title": "Inicio",
 "countdown.mainCategories": "Categorías favoritas",
 "countdown.errorRemoving": "No se pudo remover la categoría",
@@ -34,10 +39,5 @@
 "writtings.hint": "Agregá las categorías que uses con más frecuencia, para verlas en esta pantalla",
 "writtings.search": "Productos",
 "writtings.cart": "Carrito",
-"writtings.scan": "Escanear Producto con QR",
-"login.title": "Iniciar sesión",
-"login.user": "Usuario",
-"login.password": "Contraseña",
-"login.login": "Ingresar",
-"login.invalidUserPass": "Usuario o contraseña incorrectos"
+"writtings.scan": "Escanear Producto con QR"
 }

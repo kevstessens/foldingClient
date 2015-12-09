@@ -3,15 +3,14 @@
     <ion-nav-title>{{'countdown.title' | translate}}</ion-nav-title>
 
     <ion-content class="full-back"
-                 style="background: url('main/assets/images/large.jpg') no-repeat center center fixed;">
+                 style="background: url('main/assets/images/large.jpg') no-repeat center center fixed; ">
 
-        <div class="card" style="background-color: rgba(255,255,255,0.6) !important;">
-            <div class="item item-text-wrap text-center" style="background-color: rgba(255,255,255,0.6) !important;">
-                <h2 style="font-size: 20px; margin-bottom:-15px">FALTAN</h2>
+        <div class="card" style="background: url('http://localhost:3000/{{writting.picture.picture.url}}'); background-size: 100% auto;  background-position: center center;" ng-repeat="writting in writtingsCtrl.writtings">
+            <div class="item item-text-wrap text-center" style="background-color: rgba(255,255,255,0.5) !important;">
+                <h2 style="font-size: 20px; margin-bottom:-15px">{{writting.title}}</h2>
 
-                <h1 class="positive">{{countdownCtrl.countdown.days}} DIAS</h1>
+                <h1 class="positive">{{writting.activation_date | date}}</h1>
 
-                <h2 style="font-size: 20px; margin-top:-15px">PARA VERTE DE NUEVO</h2>
                 <i class="icon ion-clock countdown-icon-back"></i>
 
             </div>

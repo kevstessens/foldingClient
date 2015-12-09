@@ -17,13 +17,7 @@ angular.module('main', [
     // Allow same origin resource loads.
     'self',
     // Allow loading from our assets domain.
-    'http://localhost:8080/**',
-    'http://gendev.tekgenesis.com/**',
-    'http://graylog.tekgenesis.com/**',
-    'http://srvlappsd51.garba.com.ar:8080/**',
-    'http://*.garba.com.ar/**',
-    // Allow loading from our assets domain.
-    'http://*.garbarino.com/**'
+    'http://localhost:9000/**'
   ]);
 }).config(function ($translateProvider) {
   $translateProvider.useMissingTranslationHandlerLog();

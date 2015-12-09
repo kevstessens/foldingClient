@@ -3,13 +3,13 @@
     <ion-nav-title>{{'home.title' | translate}}</ion-nav-title>
 
     <ion-content class="full-back"
-                 style="background: url('main/assets/images/large.jpg') no-repeat center center fixed;">
+                 style="background: url('{{homeCtrl.homePic}}') no-repeat center center fixed;">
 
         <div class="card" style="background-color: rgba(255,255,255,0.6) !important;">
             <div class="item item-text-wrap text-center" style="background-color: rgba(255,255,255,0.6) !important;">
                 <h1 class="positive">HOY EXTRAÑO</h1>
 
-                <h2 style="font-size: 20px; margin-top:-15px">Comer pochoclos en la cama</h2>
+                <h2 style="font-size: 20px; margin-top:-15px">{{homeCtrl.homePhrase}}</h2>
                 <i class="icon ion-heart home-icon-back"></i>
 
             </div>
