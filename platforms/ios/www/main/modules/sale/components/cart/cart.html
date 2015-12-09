@@ -1,0 +1,28 @@
+<ion-view class="cart-view">
+
+  <ion-nav-title>{{'cart.title' | translate}}</ion-nav-title>
+  <ion-nav-buttons side="right">
+    <search-nav-button></search-nav-button>
+  </ion-nav-buttons>
+
+  <ion-content>
+
+
+  <cart-item item="item" sale-id="cartCtrl.cart.id" index="$index" ng-repeat="item in cartCtrl.cart.items"></cart-item>
+
+  </ion-content>
+
+
+  <ion-footer-bar align-title="left" class="bar-stable">
+    <h1 class="title"><span>Total: {{cartCtrl.cart.subtotal | currency}}</span></h1>
+    <!--<div class="buttons" ng-click="doSomething()">-->
+      <!--<button class="button">{{'cart.checkout' | translate}}</button>-->
+    <!--</div>-->
+  </ion-footer-bar>
+
+  <script id="templates/popover.html" type="text/ng-template">
+
+  </script>
+
+
+</ion-view>

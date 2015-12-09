@@ -1,0 +1,27 @@
+<ion-view>
+
+  <ion-nav-title>{{'salable-search.title' | translate}}</ion-nav-title>
+
+  <!-- We need to wrap the entire header around a form so we can get the Go/Search key event by the submit directive -->
+  <ion-header-bar class="bar bar-subheader item-input-inset">
+    <form class="full-width"> <!-- Disable submit for now ng-submit="salableSearchCtrl.search()"-->
+      <input class="full-width" placeholder="{{'salable-search.search' | translate}}" ng-model="salableSearchCtrl.queryString" type="search" ng-model-options="{debounce: 500}" ion-auto-focus>
+    </form>
+    <qr-scanner-ico ng-show="salableSearchCtrl.isEmpty()"></qr-scanner-ico>
+    <button class="button icon button-clear ion-android-close" ng-hide="salableSearchCtrl.isEmpty()" ng-click="salableSearchCtrl.clear()"></button>
+  </ion-header-bar>
+
+
+  <ion-content class="padding">
+    <ion-list>
+      <ion-checkbox ng-model="salableSearchCtrl.filterByCategory" ng-click="salableSearchCtrl.suggest()" ng-hide="salableSearchCtrl.category == null">
+          {{'salable-search.categoryCheckbox' | translate : {category: salableSearchCtrl.category.name} }}
+      </ion-checkbox>
+      <ion-spinner ng-show="salableSearchCtrl.suggesting"></ion-spinner>
+      <ion-item ng-repeat="result in salableSearchCtrl.results" ng-hide="salableSearchCtrl.suggesting" ng-click="salableSearchCtrl.navigateToSalable(result.key)">
+        {{result.description}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+</ion-view>

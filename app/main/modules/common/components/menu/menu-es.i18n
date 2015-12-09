@@ -1,0 +1,17 @@
+{
+  "scan": "Escanear prod.",
+  "dispatch": "Entrega",
+  "logout": "Cerrar sesión",
+  "noStore": "Sin sucursal",
+  "version": "Ver.: {{ver}}",
+  "home": "Inicio",
+  "sale": "Venta",
+  "config": "Configuración",
+  "catalog": "Catálogo",
+  "categories": "Categorías",
+  "searchProduct": "Buscar prod.",
+  "cart": "Carrito",
+  "credit": "Crédito",
+  "creditRequest": "Solicitud",
+  "comparator": "Comparador"
+}

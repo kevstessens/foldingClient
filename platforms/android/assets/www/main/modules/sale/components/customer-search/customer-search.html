@@ -1,0 +1,23 @@
+<ion-view>
+
+  <ion-nav-title>{{'customer-search.title' | translate}}</ion-nav-title>
+
+  <!-- We need to wrap the entire header around a form so we can get the Go/Search key event by the submit directive -->
+  <ion-header-bar class="bar bar-subheader item-input-inset">
+    <form class="full-width">
+      <input class="full-width" placeholder="{{'customer-search.search' | translate}}" ng-model="customerSearchCtrl.queryString" type="search" ng-model-options="{debounce: 500}" ion-auto-focus>
+    </form>
+    <button class="button icon button-clear ion-android-close" ng-hide="customerSearchCtrl.isEmpty()" ng-click="customerSearchCtrl.clear()"></button>
+  </ion-header-bar>
+
+
+  <ion-content class="padding">
+    <ion-list>
+      <ion-spinner ng-show="customerSearchCtrl.suggesting"></ion-spinner>
+      <ion-item ng-repeat="result in customerSearchCtrl.results" ng-hide="customerSearchCtrl.suggesting" ng-click="customerSearchCtrl.navigateToCustomer(result.key)">
+        {{result.description}}
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+</ion-view>

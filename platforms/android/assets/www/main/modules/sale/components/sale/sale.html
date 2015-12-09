@@ -1,0 +1,24 @@
+<ion-tabs class="tabs-icon-top tabs-striped tabs-color-light tabs-background-assertive">
+  <div class="">
+
+    <!-- List Tab -->
+
+    <!-- Debug Tab -->
+    <ion-tab title="{{'sale.customer' | translate}}" icon-off="ion-ios-person-outline" icon-on="ion-ios-person"
+             ng-click="saleCtrl.navigateToCustomer()">
+      <ion-nav-view name="tab-customer"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="{{'sale.payment' | translate}}" icon-off="ion-social-usd-outline" icon-on="ion-social-usd"
+             ng-click="saleCtrl.navigateToPayment()">
+      <ion-nav-view name="tab-payment"></ion-nav-view>
+    </ion-tab>
+
+    <ion-tab title="{{'sale.summary' | translate}}" icon-off="ion-ios-paper-outline" icon-on="ion-ios-paper"
+             ng-click="saleCtrl.navigateToSummary()">
+      <ion-nav-view name="tab-summary"></ion-nav-view>
+    </ion-tab>
+
+  </div>
+
+</ion-tabs>

@@ -1,0 +1,117 @@
+<ion-side-menus enable-menu-with-back-views="false" class="menu-view">
+
+  <!-- CONTENT -->
+  <ion-side-menu-content>
+
+    <!-- header bar -->
+    <!-- the nav bar will be updated as we navigate between views -->
+    <ion-nav-bar class="bar-assertive bar-header">
+      <!-- back button, shown if applicable -->
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+      <!-- nav button, shown if applicable -->
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon-round" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <!-- ROUTING INJECTED HERE: pageContent -->
+    <ion-nav-view></ion-nav-view>
+
+  </ion-side-menu-content>
+
+  <!-- SIDEMENU -->
+  <ion-side-menu side="left">
+
+    <!-- menu header -->
+    <ion-header-bar class="expanded bar bar-header disable-user-behavior" style="background-image: url('main/assets/images/material-graphite.jpg'); background-size: 120%; background-position: 0%;">
+
+      <div class="row">
+
+        <div class="col col-33">
+
+          <dynamic-image url="menuCtrl.user.picture" mode="SMALL" class="avatar rounded" ng-show="menuCtrl.user.picture"></dynamic-image>
+          <avatar-initials diameter="75" model="menuCtrl.user.name" ng-if="menuCtrl.user.picture == null" ></avatar-initials>
+        </div>
+        <div class="col">
+          <div class="menu-name">
+            {{menuCtrl.user.name}}
+          </div>
+          <div class="menu-placeholder">
+            {{menuCtrl.store.name}}
+          </div>
+          <div class="menu-placeholder">
+            {{'menu.version' | translate : {ver: menuCtrl.version} }}
+          </div>
+        </div>
+      </div>
+      <i class="icon ion-refresh" style="color: white; font-size: 30px" ng-click="menuCtrl.refresh()"></i>
+
+    </ion-header-bar>
+    <!-- menu content -->
+    <ion-content class="stable-bg has-expanded-header ionic-scroll  has-header">
+
+      <ion-list class="disable-user-behavior">
+
+        <div class="item item-icon-left" menu-close ui-sref="common.home">
+          <i class="icon ion-home"></i> {{'menu.home' | translate}}
+        </div>
+
+        <div class="item item-divider">
+          {{'menu.catalog' | translate}}
+        </div>
+
+        <div class="item item-icon-left" menu-close ui-sref="catalog.categories">
+          <i class="icon ion-grid"></i> {{'menu.categories' | translate}}
+        </div>
+
+        <div class="item item-icon-left" menu-close ui-sref="catalog.salableSearch">
+          <i class="icon ion-search"></i> {{'menu.searchProduct' | translate}}
+        </div>
+
+        <qr-scanner-menu></qr-scanner-menu>
+
+        <div class="item item-icon-left" menu-close ng-click="menuCtrl.navigateToComparator()" ng-if="menuCtrl.getComparatorQuantity() > 0">
+          <i class="icon ion-podium"></i>
+          {{'menu.comparator' | translate}}
+          <comparator-badge></comparator-badge>
+        </div>
+
+        <div class="item item-divider">
+          {{'menu.sale' | translate}}
+        </div>
+
+        <div class="item item-icon-left" menu-close ng-click="menuCtrl.navigateToCart()">
+          <i class="icon ion-android-cart"></i>
+          {{'menu.cart' | translate}}
+          <cart-badge></cart-badge>
+        </div>
+
+        <div class="item item-divider">
+          {{'menu.credit' | translate}}
+        </div>
+
+        <div class="item item-icon-left" menu-close ui-sref="credit.creditRequest">
+          <i class="icon ion-social-usd"></i> {{'menu.creditRequest' | translate}}
+        </div>
+
+        <!--<div class="item item-icon-left" menu-close ui-sref="dispatch-sale">-->
+          <!--<i class="icon ion-clipboard"></i> {{'menu.dispatch' | translate}}-->
+        <!--</div>-->
+
+        <div class="item item-divider">
+          {{'menu.config' | translate}}
+        </div>
+
+        <div class="item item-icon-left" menu-close ng-click="menuCtrl.logout()">
+          <i class="icon ion-log-out"></i> {{'menu.logout' | translate}}
+        </div>
+
+
+      </ion-list>
+    </ion-content>
+
+  </ion-side-menu>
+
+</ion-side-menus>

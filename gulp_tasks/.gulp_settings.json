@@ -1,0 +1,7 @@
+{
+  "defaults": {
+    "watch": {
+      "env": "desa"
+    }
+  }
+}

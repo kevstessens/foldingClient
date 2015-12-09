@@ -1,0 +1,17 @@
+{
+  "scan": "Scan Product",
+  "dispatch": "Dispatch",
+  "logout": "Logout",
+  "noStore": "No store",
+  "version": "Ver.: {{ver}}",
+  "home": "Home",
+  "sale": "Sale",
+  "config": "Configuration",
+  "catalog": "Catalog",
+  "categories": "Categories",
+  "searchProduct": "Search Product",
+  "cart": "Cart",
+  "credit": "Credit",
+  "creditRequest": "Request",
+  "comparator": "Comparator"
+}

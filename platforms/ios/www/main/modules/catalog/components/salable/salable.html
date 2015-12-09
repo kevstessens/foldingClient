@@ -1,0 +1,95 @@
+<ion-view class="salable-view">
+
+  <ion-nav-title>{{salableCtrl.salable.description}}</ion-nav-title>
+
+  <ion-nav-buttons side="right">
+    <comparator-summary></comparator-summary>
+    <cart-summary></cart-summary>
+  </ion-nav-buttons>
+
+  <!-- Hide the content until salable is loaded (do not use ng-if as scroll will not work and layout will be messed) -->
+  <ion-content class="padding" id="content" ng-show="salableCtrl.salable">
+
+    <ion-scroll direction="x">
+      <img ng-repeat="image in allImages" ng-src="{{image.src}}" ng-click="salableCtrl.openModal(image.src,$index)" class="image-list-thumb"/>
+    </ion-scroll>
+
+
+    <div class="card">
+
+      <div class="item item-image">
+        <ion-slide-box on-slide-changed="slideHasChanged($index)" show-pager="true">
+          <ion-slide ng-repeat="image in salableCtrl.salable.images" >
+            <img class="full-image padding-image" ng-src="{{image.original}}" ng-click="salableCtrl.openModal(image.original)">
+          </ion-slide>
+          <ion-slide ng-if="salableCtrl.salable.images.length == 0" >
+            <img class="full-image padding-image" ng-src="main/assets/images/no-image.png">
+          </ion-slide>
+        </ion-slide-box>
+      </div>
+      <div class="row whitesmoke">
+        <div class="col col-75">
+          <h5 class="no-margin">{{salableCtrl.salable.description}}</h5>
+        </div>
+        <div class="col col-25">
+          <h3 class="price">{{salableCtrl.salable.price | currency}}</h3>
+        </div>
+      </div>
+    </div>
+
+    <div class="list">
+      <a class="item item-icon-left" href="#" ng-if="salableCtrl.salable.stock" ng-click="salableCtrl.navigateToStock()">
+        <i class="icon ion-home"></i>
+        {{'salable.stock' | translate}}
+        <span class="badge badge-energized first-badge">{{salableCtrl.salable.stock.store}}</span>
+        <span class="badge badge-balanced second-badge">{{salableCtrl.salable.stock.exhibition}}</span>
+        <span class="badge badge-positive">{{salableCtrl.salable.stock.shipping}}</span>
+      </a>
+      <a class="item item-icon-left" ng-click="salableCtrl.navigateToSimilars()">
+        <i class="icon ion-arrow-expand"></i>
+        {{'salable.similars' | translate}}
+      </a>
+      <a class="item item-icon-left" ng-click="salableCtrl.navigateToSuggestions()">
+        <i class="icon ion-shuffle"></i>
+        {{'salable.suggestions' | translate}}
+      </a>
+      <a class="item item-icon-left" ng-click="salableCtrl.addToComparator()">
+        <i class="icon ion-podium"></i>
+        {{'salable.compare' | translate}}
+      </a>
+
+    </div>
+
+    <div class="card">
+      <div class="item item-divider">
+        <div class="row">{{'salable.description' | translate}}</div>
+      </div>
+      <div class="row"><div class="col col-33"><b>{{'salable.code' | translate}}</b></div> <div class="col">{{salableCtrl.salable.code}}</div></div>
+      <div class="row"><div class="col col-33"><b>{{'salable.brand' | translate}}</b></div><div class="col">{{salableCtrl.salable.brand.name}}</div></div>
+      <div class="row" ng-if="salableCtrl.salable.model"><div class="col col-33"><b>{{'salable.model' | translate}}</b> </div><div class="col">{{salableCtrl.salable.model}}</div></div>
+      <div class="row" ng-if="salableCtrl.salable.origin"><div class="col col-33"><b>{{'salable.origin' | translate}}</b></div><div class="col"><img ng-src="{{salableCtrl.salable.origin.flagImage}}" ng-if="salableCtrl.salable.origin.flagImage" style="height: 15px;"> {{salableCtrl.salable.origin.name}}</div></div>
+      <div class="row"><div class="col col-33"><b>{{'salable.legacyNumber' | translate}}</b></div> <div class="col">{{salableCtrl.salable.legacyCode}}</div></div>
+    </div>
+
+    <div class="card" ng-click="salableCtrl.navigateToFeatures()" ng-if="salableCtrl.features.length != 0">
+      <div class="item item-divider">
+        <div class="row">{{'salable.features' | translate}}</div>
+      </div>
+      <div class="row" ng-repeat="feature in salableCtrl.features | filter:salableCtrl.filterByValidFeature">
+        <div class="col col-50">
+          <b>{{feature.name}}</b>
+        </div>
+        <div class="col">
+          {{feature.value}}
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+
+  <fab-button target-id="content">
+    <add-to-cart salable-id="salableCtrl.salable.id" related-salable-id="salableCtrl.relatedSalableId"
+                 related-product-id="salableCtrl.relatedProductId"></add-to-cart>
+  </fab-button>
+
+</ion-view>

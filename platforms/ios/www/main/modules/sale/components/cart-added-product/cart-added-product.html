@@ -1,0 +1,80 @@
+<ion-view class="cart-added-product-view">
+
+  <ion-nav-title>{{"cart-added-product.title" | translate}}</ion-nav-title>
+
+  <ion-content class="padding" id="content">
+
+    <div class="card no-margin">
+      <div class="item item-divider item-balanced item-icon-left">
+        <i class="icon ion-checkmark"></i>
+        <span ng-if="cartAddedProductCtrl.item.children.length <= 0">{{"cart-added-product.success" | translate}}</span>
+        <span ng-if="cartAddedProductCtrl.item.children.length > 0">{{"cart-added-product.successCombo" | translate}}</span>
+      </div>
+      <div class="item item-text-wrap">
+        <a class="item item-thumbnail-left no-radius">
+          <img ng-src="{{cartAddedProductCtrl.item.image}}"/>
+
+          <h2 class="header-break padding-horizontal">{{cartAddedProductCtrl.item.description}}</h2>
+
+          <div class="row padding-horizontal">
+            <div class="col-70">
+            </div>
+            <div class="col">
+              <h1 class="price">{{cartAddedProductCtrl.item.unitPrice | currency}}</h1>
+            </div>
+          </div>
+
+        </a>
+        <a class="item item-thumbnail-left no-radius" ng-repeat="child in cartAddedProductCtrl.item.children">
+          <img ng-src="{{child.image}}"/>
+
+          <h2 class="header-break padding-horizontal">{{child.description}}</h2>
+
+          <div class="row padding-horizontal">
+            <div class="col-70">
+            </div>
+            <div class="col">
+              <h1 class="price">{{child.unitPrice | currency}}</h1>
+            </div>
+          </div>
+
+        </a>
+      </div>
+      <div class="item item-divider item-stable">
+        {{"cart-added-product.cartCount" | translate : {quantity: cartAddedProductCtrl.cartSummary.quantity} }}
+        {{cartAddedProductCtrl.cart.subtotal | currency}}
+      </div>
+    </div>
+
+    <div class="row no-padding">
+      <div class="col">
+        <button class="button button-stable button-block" ng-click="cartAddedProductCtrl.navigateHome()">
+          {{"cart-added-product.keepBuying" | translate}}
+        </button>
+      </div>
+      <div class="col">
+        <button class="button button-balanced button-block" ng-click="cartAddedProductCtrl.navigateToCart()">
+          {{"cart-added-product.goToCart" | translate}}
+        </button>
+      </div>
+    </div>
+
+    <div class="row row-no-padding" ng-if="cartAddedProductCtrl.suggestions.length > 0">
+      <h4> {{"cart-added-product.suggested" | translate}} </h4>
+    </div>
+
+       <a class="item item-avatar item-button-right" ng-repeat="suggestion in cartAddedProductCtrl.suggestions">
+         <img ng-src="{{suggestion.image.thumb}}" class="no-radius" ng-if="suggestion.image.thumb"/>
+         <img ng-src="main/assets/images/no-image.png" class="no-radius" ng-if="!suggestion.image.thumb"/>
+          <p><b>{{suggestion.description}}</b></p>
+          <p>{{cartAddedProductCtrl.item.unitPrice | currency}}</p>
+          <button class="button button-positive vertical-centered" ng-click="cartAddedProductCtrl.addToCart(suggestion.id,cartAddedProductCtrl.item.salableId,cartAddedProductCtrl.item.productId)">
+            <i class="icon ion-plus"></i>
+          </button>
+
+        </a>
+
+
+  </ion-content>
+
+</ion-view>

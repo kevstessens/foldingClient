@@ -1,0 +1,59 @@
+<ion-view class="credit-request-view">
+
+  <ion-nav-title>{{'credit-request.title' | translate}}</ion-nav-title>
+
+  <ion-content>
+
+    <form name="requestForm">
+
+      <div class="list padding">
+
+        <div class="item item-divider">
+          {{'credit-request.personalData' | translate}}
+        </div>
+        <div class="item item-input item-select">
+          <div class="input-label">
+            {{'credit-request.idType' | translate}}
+          </div>
+          <select ng-model="creditRequestCtrl.idType" disabled required>
+            <option value="DNI">{{'credit-request.idTypeDni' | translate}}</option>
+          </select>
+        </div>
+        <label class="item item-input">
+          <span class="input-label">{{'credit-request.idNumber' | translate}}</span>
+          <input type="number" ng-model="creditRequestCtrl.idNumber" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">{{'credit-request.firstName' | translate}}</span>
+          <input type="text" ng-model="creditRequestCtrl.firstName" required>
+        </label>
+        <label class="item item-input">
+          <span class="input-label">{{'credit-request.lastName' | translate}}</span>
+          <input type="text" ng-model="creditRequestCtrl.lastName" required>
+        </label>
+        <div class="item item-input item-select">
+          <div class="input-label">
+            {{'credit-request.gender' | translate}}
+          </div>
+          <select ng-model="creditRequestCtrl.gender" required>
+            <option value="MALE">{{'credit-request.genderMale' | translate}}</option>
+            <option value="FEMALE">{{'credit-request.genderFemale' | translate}}</option>
+          </select>
+        </div>
+        <label class="item item-input">
+          <span class="input-label">{{'credit-request.dateOfBirth' | translate}}</span>
+          <input type="date" ng-model="creditRequestCtrl.dateOfBirth" required>
+        </label>
+
+      </div>
+
+      <div class="padding">
+        <button class="button button-block button-positive" ng-disabled="requestForm.$invalid"
+                ng-click="creditRequestCtrl.request()">{{'credit-request.request' | translate}}</button>
+      </div>
+
+    </form>
+
+  </ion-content>
+
+</ion-view>

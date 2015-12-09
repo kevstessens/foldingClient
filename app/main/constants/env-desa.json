@@ -1,0 +1,5 @@
+{
+  "SERVER_URL": "http://gendesa.garba.com.ar",
+  "SETTINGS_KEY": "genesis-mobile-settings-desa",
+  "GRAYLOG_URL": "http://10.0.1.85:12666/gelf"
+}

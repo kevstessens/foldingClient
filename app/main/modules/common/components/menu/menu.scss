@@ -1,0 +1,26 @@
+.menu-view{
+  .expanded {
+    height: 105px;
+  }
+
+  .has-expanded-header {
+    top: 105px;
+  }
+
+  .menu-name{
+    margin-top: 20px;
+    font-size: 20px;
+    color: white;
+  }
+
+  .menu-placeholder{
+    font-size: 12px;
+    color: white;
+  }
+
+  .rounded{
+    border-radius: 50%;
+    height: 100%;
+    width: 75px;
+  }
+}

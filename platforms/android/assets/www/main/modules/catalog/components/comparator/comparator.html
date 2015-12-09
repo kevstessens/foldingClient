@@ -1,0 +1,49 @@
+<ion-view class="comparator-view">
+
+  <ion-nav-title>{{'comparator.title' | translate}}</ion-nav-title>
+
+  <ion-nav-buttons side="right">
+    <button class="button button-icon ion-trash-a" ng-click="comparatorCtrl.clearComparator()"></button>
+    <cart-summary></cart-summary>
+  </ion-nav-buttons>
+
+  <ion-content ng-class="comparatorCtrl.salables.length <= 0 ? 'flex-vertical-center' : ''">
+
+    <div class="big-icon flex-horizontal-center" ng-if="comparatorCtrl.salables.length <= 0">
+      <span class="ion-alert"></span>
+    </div>
+    <div class="flex-horizontal-center" ng-if="comparatorCtrl.salables.length <= 0">
+      <span>{{'comparator.empty' | translate}}</span>
+    </div>
+
+
+    <ion-list ng-if="comparatorCtrl.salables.length > 0">
+
+
+      <div class="row"
+           ng-class="[column.type === 'GROUP' ? 'border whitesmoke' : '', !column.equal && column.label ? 'border different' : '', column.type === 'KEY' ? 'header-row' : '' ]"
+           ng-repeat="column in comparatorCtrl.comparatorItems track by $index"
+           ng-if="!column.equal && comparatorCtrl.hideDifferences || !comparatorCtrl.hideDifferences || column.type === 'GROUP'">
+        <div class="col bold">{{column.label}}</div>
+
+        <div class="col whitesmoke-icon" ng-repeat="item in column.values track by $index" ng-if="column.type === 'KEY'">
+          <i class="icon button-icon ion-android-more-horizontal black-icon" onclick="event.stopPropagation();" ng-click="comparatorCtrl.openPopover($event, item)"></i>
+        </div>
+
+        <div ng-class="column.type === 'TITLE' ? 'col bold' : 'col'" ng-repeat="item in column.values track by $index" ng-if="column.type != 'KEY'">
+          <dynamic-image url="item" mode="MEDIUM" ng-if="column.type === 'IMAGE'" style="width: 100%"></dynamic-image>
+          <span ng-if="column.type != 'IMAGE' && column.type != 'KEY'">{{item}}</span>
+        </div>
+      </div>
+
+
+    </ion-list>
+
+  </ion-content>
+
+  <button class="fab-button" ng-click="comparatorCtrl.toggleDifferences()" data-tap-disabled="true"
+          ng-if="comparatorCtrl.salables.length >1">
+    <i ng-class="comparatorCtrl.hideDifferences ? 'icon ion-funnel on-icon' : 'icon ion-funnel'"></i>
+  </button>
+
+</ion-view>

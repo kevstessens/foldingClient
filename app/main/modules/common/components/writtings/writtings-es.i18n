@@ -1,0 +1,11 @@
+{
+  "title" : "Inicio",
+  "mainCategories": "Categorías favoritas",
+  "errorRemoving": "No se pudo remover la categoría",
+  "hint": "Agregá las categorías que uses con más frecuencia, para verlas en esta pantalla",
+  "search": "Productos",
+  "cart": "Carrito",
+  "scan": "Escanear Producto con QR"
+
+
+}

@@ -1,0 +1,86 @@
+<ion-side-menus enable-menu-with-back-views="false" class="menu-view">
+
+  <!-- CONTENT -->
+  <ion-side-menu-content>
+
+    <!-- header bar -->
+    <!-- the nav bar will be updated as we navigate between views -->
+    <ion-nav-bar class="bar-positive bar-header">
+      <!-- back button, shown if applicable -->
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+      <!-- nav button, shown if applicable -->
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon-round" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+
+    <!-- ROUTING INJECTED HERE: pageContent -->
+    <ion-nav-view></ion-nav-view>
+
+  </ion-side-menu-content>
+
+  <!-- SIDEMENU -->
+  <ion-side-menu side="left">
+
+    <!-- menu header -->
+    <ion-header-bar class="expanded bar bar-header disable-user-behavior" style="background-image: url('main/assets/images/background.jpg'); background-size: 120%; background-position: 0%;">
+
+      <div class="row">
+
+        <div class="col col-33">
+          <img ng-src="main/assets/images/profile.jpg" class="avatar rounded" />
+        </div>
+        <div class="col">
+          <div class="menu-name">
+            Celina
+          </div>
+          <div class="menu-placeholder">
+            de la Peña
+          </div>
+        </div>
+      </div>
+      <i class="icon ion-refresh" style="color: white; font-size: 30px" ng-click="menuCtrl.refresh()"></i>
+
+    </ion-header-bar>
+    <!-- menu content -->
+    <ion-content class="stable-bg has-expanded-header ionic-scroll  has-header">
+
+      <ion-list class="disable-user-behavior">
+
+        <div class="item item-icon-left" menu-close ui-sref="common.home">
+          <i class="icon ion-home"></i> Inicio
+        </div>
+
+        <div class="item item-divider">
+          Secciones
+        </div>
+
+        <div class="item item-icon-left" menu-close ng-click="menuCtrl.navigateToWrittings()">
+          <i class="icon ion-ios-bookmarks"></i> Escritos
+        </div>
+
+        <div class="item item-icon-left" menu-close ng-click="menuCtrl.navigateToCountdown()">
+          <i class="icon ion-calendar"></i> Cuenta regresiva
+        </div>
+
+        <!--<div class="item item-icon-left" menu-close ng-click="menuCtrl.navigateToCountdown()">-->
+          <!--<i class="icon ion-location"></i> Distancia-->
+        <!--</div>-->
+
+        <div class="item item-divider">
+          Acciones
+        </div>
+
+        <div class="item item-icon-left" menu-close ng-click="menuCtrl.logout()">
+          <i class="icon ion-log-out"></i> {{'menu.logout' | translate}}
+        </div>
+
+
+      </ion-list>
+    </ion-content>
+
+  </ion-side-menu>
+
+</ion-side-menus>

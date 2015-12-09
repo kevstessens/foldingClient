@@ -1,0 +1,61 @@
+<ion-view class="categories-view">
+
+  <ion-nav-title>{{'categories.title' | translate}}</ion-nav-title>
+
+  <ion-nav-buttons side="right">
+    <search-nav-button category-key="catCtrl.categoryKey"></search-nav-button>
+    <comparator-summary></comparator-summary>
+    <cart-summary></cart-summary>
+  </ion-nav-buttons>
+
+  <ion-header-bar class="bar bar-subheader">
+    <div class="buttons">
+      <button class="button button-dark" ng-show="catCtrl.category"
+              ng-click="catCtrl.navigateToSalables(catCtrl.category.key)">
+        {{'categories.allInCategory' | translate : {category: catCtrl.category.name} }}
+      </button>
+    </div>
+    <h1 class="title"></h1> <!-- Needed in order to get left-right buttons work-->
+    <div class="buttons">
+      <button class="button button-icon icon button-clear button-dark" ng-click="catCtrl.toggleView()"
+              ng-class="catCtrl.listView ? 'ion-grid' : 'ion-navicon'"></button>
+    </div>
+  </ion-header-bar>
+
+  <ion-content id="content-categories">
+
+    <ion-list ng-if="catCtrl.listView">
+      <ion-item class="item item-icon-right" ng-repeat="category in catCtrl.categories"
+                ng-click="catCtrl.navigate(category.key)" on-hold="catCtrl.addToHome(category.key)">
+        {{category.name}}
+        <i class="icon ion-android-more-vertical" ng-click="catCtrl.openPopover($event, category.key)" onclick="event.stopPropagation();"></i>
+      </ion-item>
+    </ion-list>
+    <div ng-if="!catCtrl.listView">
+
+      <div class="row" ng-repeat="category in catCtrl.categories track by $index" ng-if="$index % 3 == 0"
+           ng-hide="catCtrl.listView">
+
+        <div class="col col-category col-33" ng-repeat="i in [$index, $index + 1, $index + 2]"
+             ng-if="catCtrl.categories[i]">
+
+          <div class="list card card-category whitesmoke" ng-click="catCtrl.navigate(catCtrl.categories[i].key)">
+            <div class="item item-image item-icon-right">
+              <dynamic-image url="catCtrl.categories[i].image" mode="SMALL"
+                             ng-if="catCtrl.categories[i].image"></dynamic-image>
+              <avatar-initials diameter="60" model="catCtrl.categories[i].name"
+                               ng-if="!catCtrl.categories[i].image"></avatar-initials>
+              <i class="icon ion-android-more-vertical" ng-click="catCtrl.openPopover($event, catCtrl.categories[i].key)" onclick="event.stopPropagation();"></i>
+            </div>
+            <p class="text-center truncate"> {{catCtrl.categories[i].name}} </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </ion-content>
+
+  <qr-scanner-fab></qr-scanner-fab>
+
+</ion-view>

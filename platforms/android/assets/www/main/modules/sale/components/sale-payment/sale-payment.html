@@ -1,0 +1,65 @@
+<ion-view class="sale-payment-view" cache-view="false">
+
+  <ion-nav-title>{{'sale-payment.title' | translate}}</ion-nav-title>
+
+  <ion-content ng-hide="salePaymentCtrl.loading">
+
+    <div class="card">
+      <div class="item item-divider">
+        <span>{{'sale-payment.totalToBePaid' | translate}}</span>
+        <span style="float: right">{{salePaymentCtrl.sale.totalToBePaid | currency}}</span>
+      </div>
+      <div class="item item-text-wrap" ng-if="salePaymentCtrl.sale.payments.length > 0">
+
+        <div class="item item-thumbnail-left no-radius item-icon-right" ng-repeat="payment in salePaymentCtrl.sale.payments">
+          <dynamic-image url="payment.image" ng-if="payment.image" mode="SMALL"></dynamic-image>
+          <img ng-src="main/assets/images/no-image.png" ng-if="!payment.image"/>
+          <i class="icon ion-android-more-vertical" onclick="event.stopPropagation();" ng-click="salePaymentCtrl.openPopover($event, payment.index)"></i>
+
+
+          <h2 class="header-break">{{payment.paymentMethod.description}}</h2>
+
+
+
+          <div class="row no-padding amount">
+            {{payment.amount | currency}}
+          </div>
+
+          <div class="row bold no-padding installments">
+            {{payment.installments}} x {{payment.installmentAmount | currency}}
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="item item-text-wrap" ng-if="!salePaymentCtrl.customer">
+        <div class="row">
+          <button class="button button-positive button-block" ng-click="salePaymentCtrl.navigateToSearch()">
+            <i class="ion-plus"></i> {{"sale-payment.add" | translate}}
+          </button>
+        </div>
+      </div>
+      <div class="item item-divider">
+        <span>{{'sale-payment.totalPayed' | translate}}</span>
+        <span style="float: right">{{salePaymentCtrl.sale.paymentsAmount | currency}}</span>
+
+      </div>
+
+    </div>
+
+
+    <div class="list padding">
+
+      <!--<div class="row">-->
+        <!--<button class="button button-assertive button-block" ng-click="salePaymentCtrl.navigateToSummary()">-->
+          <!--{{"sale-payment.next" | translate}} <i class="ion-chevron-right"></i>-->
+        <!--</button>-->
+      <!--</div>-->
+
+    </div>
+
+  </ion-content>
+
+
+</ion-view>

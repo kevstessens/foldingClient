@@ -1,0 +1,24 @@
+<ion-view class="login-view">
+
+  <ion-nav-title>{{'login.title' | translate}}</ion-nav-title>
+
+  <ion-nav-bar class="bar-assertive">
+  </ion-nav-bar>
+
+  <ion-content id="login" class="flex-vertical-center">
+
+    <div class="list padding full-width">
+      <label class="item item-input">
+        <input type="text" placeholder="{{'login.user' | translate}}" ng-model="loginCtrl.user">
+      </label>
+      <label class="item item-input">
+        <input type="password" placeholder="{{'login.password' | translate}}" ng-model="loginCtrl.password">
+      </label>
+    </div>
+
+    <div class="padding">
+      <button class="button button-block button-dark activated" ng-click="loginCtrl.login()">{{'login.login' | translate}}</button>
+    </div>
+
+  </ion-content>
+</ion-view>

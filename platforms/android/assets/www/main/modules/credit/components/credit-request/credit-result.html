@@ -1,0 +1,110 @@
+<ion-view class="credit-result-view">
+
+  <ion-nav-title>{{'credit-result.title' | translate}}</ion-nav-title>
+
+  <ion-content>
+
+    <div class="card">
+      <div class="item item-divider">
+        <span ng-class="creditResultCtrl.resultTitleClass">{{creditResultCtrl.resultTitle}}</span>
+      </div>
+      <div class="row">
+        <div class="col col-33"><b>{{'credit-result.requestNumber' | translate}}</b></div>
+        <div class="col">{{creditResultCtrl.result.creditRequestNumber}}</div>
+      </div>
+      <div class="row" ng-if="creditResultCtrl.result.product">
+        <div class="col col-33"><b>{{'credit-result.productName' | translate}}</b></div>
+        <div class="col">{{creditResultCtrl.result.product.name}}</div>
+      </div>
+      <div class="row" ng-if="creditResultCtrl.result.product">
+        <div class="col col-33"><b>{{'credit-result.maxShare' | translate}}</b></div>
+        <div class="col">{{creditResultCtrl.result.product.maxShare | currency}}</div>
+      </div>
+      <div class="row" ng-if="creditResultCtrl.result.product">
+        <div class="col col-33"><b>{{'credit-result.cashLimit' | translate}}</b></div>
+        <div class="col">{{creditResultCtrl.result.product.cashLimit | currency}}</div>
+      </div>
+      <div class="row" ng-if="creditResultCtrl.result.product">
+        <div class="col col-33"><b>{{'credit-result.maxLimit' | translate}}</b></div>
+        <div class="col">{{creditResultCtrl.result.product.maxLimit | currency}}</div>
+      </div>
+    </div>
+
+    <span ng-if="creditResultCtrl.result.reanalyzable">
+
+      <form name="reanalyzeForm">
+
+        <div class="list padding">
+
+          <div class="item item-divider">
+            {{'credit-result.advancedData' | translate}}
+          </div>
+
+          <div class="item item-input item-select">
+            <div class="input-label">
+              {{'credit-result.nacionality' | translate}}
+            </div>
+            <select ng-model="creditResultCtrl.advancedData.nacionality" required>
+              <option value="ARGENTINA">{{'credit-result.nacionalityArgentine' | translate}}</option>
+              <option value="EXTRANJERA">{{'credit-result.nacionalityForeigner' | translate}}</option>
+            </select>
+          </div>
+          <div class="item item-input item-select">
+            <div class="input-label">
+              {{'credit-result.maritalStatus' | translate}}
+            </div>
+            <select ng-model="creditResultCtrl.advancedData.maritalStatus" required>
+              <option value="SINGLE">{{'credit-result.maritalStatusSingle' | translate}}</option>
+              <option value="MARRIED">{{'credit-result.maritalStatusMarried' | translate}}</option>
+              <option value="DIVORCED">{{'credit-result.maritalStatusDivorced' | translate}}</option>
+              <option value="WIDOW">{{'credit-result.maritalStatusWidow' | translate}}</option>
+              <option value="SEPARATED">{{'credit-result.maritalStatusSeparated' | translate}}</option>
+            </select>
+          </div>
+          <div class="item item-input item-select">
+            <div class="input-label">
+              {{'credit-result.professionType' | translate}}
+            </div>
+            <select ng-model="creditResultCtrl.advancedData.professionType" required>
+              <option value="ORGANISMOS_ESTATALES">{{'credit-result.professionTypeState' | translate}}</option>
+              <option value="AUTONOMO">{{'credit-result.professionTypeAutonomous' | translate}}</option>
+              <option value="JUBILADO_PENSIONADO">{{'credit-result.professionTypeRetired' | translate}}</option>
+              <option value="EMPRESA_PRIVADA">{{'credit-result.professionTypePrivate' | translate}}</option>
+              <option value="FUERZAS_SEGURIDAD">{{'credit-result.professionTypeSecurity' | translate}}</option>
+              <option value="TRANSPORTE">{{'credit-result.professionTypeTransport' | translate}}</option>
+              <option value="LIMPIEZA">{{'credit-result.professionTypeCleaning' | translate}}</option>
+              <option value="NONE">{{'credit-result.professionTypeNone' | translate}}</option>
+            </select>
+          </div>
+          <label class="item item-input">
+            <span class="input-label">{{'credit-result.initialDate' | translate}}</span>
+            <input type="date" ng-model="creditResultCtrl.advancedData.initialDate" required>
+          </label>
+          <label class="item item-input">
+            <span class="input-label">{{'credit-result.income' | translate}}</span>
+            <input type="number" ng-model="creditResultCtrl.advancedData.income" required>
+          </label>
+          <div class="item item-toggle">
+            {{'credit-result.showsPaymentReceipt' | translate}}
+            <label class="toggle toggle-assertive">
+              <input type="checkbox" ng-model="creditResultCtrl.advancedData.showsPaymentReceipt">
+              <div class="track">
+                <div class="handle"></div>
+              </div>
+            </label>
+          </div>
+
+        </div>
+
+        <div class="padding">
+          <button class="button button-block button-positive" ng-disabled="reanalyzeForm.$invalid"
+                  ng-click="creditResultCtrl.reanalyze()">{{'credit-result.reanalyze' | translate}}</button>
+        </div>
+
+      </form>
+
+    </span>
+
+  </ion-content>
+
+</ion-view>

@@ -1,0 +1,92 @@
+<ion-view class="salables-view">
+
+  <ion-nav-title>{{'salables.title' | translate}}</ion-nav-title>
+
+  <ion-nav-buttons side="right">
+    <search-nav-button category-id="salablesCtrl.categoryId"></search-nav-button>
+    <comparator-summary></comparator-summary>
+    <cart-summary></cart-summary>
+  </ion-nav-buttons>
+
+  <ion-header-bar class="bar bar-subheader" align-title="left">
+    <p class="title">
+      <span ng-if="!salablesCtrl.searching && salablesCtrl.products.length == 0">
+        {{'salables.noResults' | translate}}
+      </span>
+      <span ng-if="!salablesCtrl.searching && salablesCtrl.products.length != 0">
+        {{'salables.results' | translate : {quantity: salablesCtrl.totalResults} }}
+      </span>
+    </p>
+    <div class="buttons" >
+      <button class="button button-icon icon ion-android-star button-clear" ng-click="salablesCtrl.toggleRecommendedOnly()"
+              ng-class="salablesCtrl.recommendedOnly ? 'button-dark' : '' " ng-if="salablesCtrl.mode === 'ASSOCIATED' && salablesCtrl.associationType==='SUGGESTED'"></button>
+      <button class="button button-icon icon button-clear button-dark" ng-click="salablesCtrl.toggleView()"
+              ng-class="salablesCtrl.listView ? 'ion-android-image' : 'ion-navicon'"></button>
+      <button class="button button-icon icon ion-android-options button-clear button-dark"
+              ng-click="salablesCtrl.navigateToSettings()" ng-if="salablesCtrl.mode === 'SEARCH'"></button>
+    </div>
+  </ion-header-bar>
+
+  <ion-content ng-show="!salablesCtrl.searching && salablesCtrl.products.length != 0" id="content">
+
+    <ion-refresher
+      pulling-text="{{'salables.pullToRefresh' | translate}}"
+      on-refresh="salablesCtrl.refresh()">
+    </ion-refresher>
+
+    <div class="list" ng-show="salablesCtrl.listView">
+      <div class="item item-thumbnail-left no-radius item-icon-right" ng-repeat="product in salablesCtrl.products" ng-click="salablesCtrl.navigateToSalable(product.id)">
+        <img ng-src="{{product.image.thumb}}" ng-if="product.image.thumb"/>
+        <img ng-src="main/assets/images/no-image.png" ng-if="!product.image.thumb"/>
+        <i class="icon ion-android-more-vertical" onclick="event.stopPropagation();" ng-click="salablesCtrl.openPopover($event, product.id)"></i>
+
+
+        <h2 class="header-break padding-horizontal">{{product.description}}</h2>
+
+        <div class="row padding-horizontal">
+          <div class="col-70">
+            <p>{{product.stock.label}}</p>
+            <p>{{product.legacyCode}}</p>
+          </div>
+          <div class="col">
+            <h1 class="price">{{product.price | currency}}</h1>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div ng-hide="salablesCtrl.listView">
+      <div class="card" ng-click="salablesCtrl.navigateToSalable(product.id)"
+         ng-repeat="product in salablesCtrl.products">
+
+        <div class="item item-image item-icon-right">
+          <img class="full-image half-size" ng-src="{{product.image.original}}" ng-if="product.image.original"/>
+          <img class="full-image half-size" ng-src="main/assets/images/no-image.png" ng-if="!product.image.original"/>
+        </div>
+        <div class="row whitesmoke">
+          <div class="col col-75">
+            <h5 class="no-margin">{{product.description}}</h5>
+            <p class="grid-stock">{{product.stock.label}}</p>
+          </div>
+          <div class="col col-25 right-text">
+            <h3 class="price">{{product.price | currency}}</h3>
+            <i class="icon button-icon ion-android-more-vertical" onclick="event.stopPropagation();" ng-click="salablesCtrl.openPopover($event, product.id)"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <ion-infinite-scroll
+      ng-if="salablesCtrl.hasMore"
+      on-infinite="salablesCtrl.loadMore()"
+      distance="10%">
+    </ion-infinite-scroll>
+
+  </ion-content>
+
+  <fab-button target-id="content">
+    <qr-scanner-fab></qr-scanner-fab>
+  </fab-button>
+
+</ion-view>

@@ -1,0 +1,9 @@
+{
+  "title" : "Home",
+  "mainCategories": "Main Categories",
+  "errorRemoving": "Could not remove",
+  "hint": "Long press into a category to pin it here",
+  "search": "Search",
+  "cart": "Cart",
+  "scan": "Scan Product"
+}

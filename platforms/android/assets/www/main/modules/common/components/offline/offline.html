@@ -1,0 +1,22 @@
+<ion-view class="offline-view">
+
+  <ion-nav-title>{{'offline.title' | translate}}</ion-nav-title>
+
+  <ion-nav-bar class="bar-assertive">
+  </ion-nav-bar>
+
+  <ion-content class="flex-vertical-center">
+
+    <div class="big-icon flex-horizontal-center">
+      <span class="ion-android-sad"></span>
+    </div>
+    <div class="flex-horizontal-center">
+      <span>{{'offline.message' | translate}}</span>
+    </div>
+    <div class="flex-horizontal-center">
+      <button class="retry-button button" ng-click="offlineCtrl.retry()">{{'offline.retry' | translate}}</button>
+    </div>
+
+  </ion-content>
+
+</ion-view>

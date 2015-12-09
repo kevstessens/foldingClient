@@ -1,0 +1,7 @@
+{
+  "title": "Iniciar sesión",
+  "user": "Usuario",
+  "password": "Contraseña",
+  "login": "Ingresar",
+  "invalidUserPass": "Usuario o contraseña incorrectos"
+}

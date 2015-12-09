@@ -1,0 +1,62 @@
+<ion-view class="salables-settings-view">
+
+  <ion-nav-title>{{'salables-settings.title' | translate}}</ion-nav-title>
+
+  <ion-nav-buttons side="right">
+    <button class="button button-icon ion-checkmark" ng-click="salablesSettingsCtrl.apply()">
+    </button>
+  </ion-nav-buttons>
+
+  <ion-content id="content">
+
+    <div class="list">
+      <div class="item item-divider">
+        {{'salables-settings.orderGroup' | translate}}
+      </div>
+      <div class="item item-input item-select">
+        <div class="input-label">
+          {{'salables-settings.orderBy' | translate}}
+        </div>
+        <select ng-model="salablesSettingsCtrl.settings.orderBy">
+          <option value="RELEVANCE">{{'salables-settings.orderByRelevance' | translate}}</option>
+          <option value="PRICE_ASCENDING">{{'salables-settings.orderByPriceAscending' | translate}}</option>
+          <option value="PRICE_DESCENDING">{{'salables-settings.orderByPriceDescending' | translate}}</option>
+        </select>
+      </div>
+
+      <div class="item item-divider">
+        {{'salables-settings.stockFilterGroup' | translate}}
+      </div>
+      <div class="item item-toggle">
+        {{'salables-settings.stockFilterStore' | translate}}
+        <label class="toggle toggle-assertive">
+          <input type="checkbox" ng-model="salablesSettingsCtrl.settings.stockFilter.store">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </div>
+      <div class="item item-toggle">
+        {{'salables-settings.stockFilterExhibition' | translate}}
+        <label class="toggle toggle-assertive">
+          <input type="checkbox" ng-model="salablesSettingsCtrl.settings.stockFilter.exhibition">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </div>
+      <div class="item item-toggle">
+        {{'salables-settings.stockFilterShipping' | translate}}
+        <label class="toggle toggle-assertive">
+          <input type="checkbox" ng-model="salablesSettingsCtrl.settings.stockFilter.shipping">
+          <div class="track">
+            <div class="handle"></div>
+          </div>
+        </label>
+      </div>
+
+    </div>
+
+  </ion-content>
+
+</ion-view>

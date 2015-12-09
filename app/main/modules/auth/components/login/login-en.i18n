@@ -1,0 +1,7 @@
+{
+  "title": "Login",
+  "user": "User",
+  "password": "Password",
+  "login": "Login",
+  "invalidUserPass": "Invalid user/password"
+}

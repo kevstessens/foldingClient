@@ -1,0 +1,104 @@
+<ion-view class="sale-summary-view" cache-view="false">
+
+  <ion-nav-title>{{'sale-summary.title' | translate}}</ion-nav-title>
+
+  <ion-content ng-hide="saleSummaryCtrl.loading">
+
+    <div class="card">
+      <div class="item item-divider item-icon-right">
+        {{'sale-summary.saleData' | translate}}
+      </div>
+      <div class="item item-text-wrap" ng-if="saleSummaryCtrl.sale">
+        <div class="row">
+          <div class="col col-33"><b>{{'sale-summary.number' | translate}}</b></div>
+          <div class="col">{{saleSummaryCtrl.sale.key}}</div>
+        </div>
+        <div class="row" ng-if="saleSummaryCtrl.vatType">
+          <div class="col col-33"><b>{{'sale-summary.taxType' | translate}}</b></div>
+          <div class="col">{{saleSummaryCtrl.vatType}}</div>
+        </div>
+        <div class="row">
+          <div class="col col-33"><b>{{'sale-summary.totalToBePaid' | translate}}</b></div>
+          <div class="col">{{saleSummaryCtrl.sale.totalToBePaid | currency}}</div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="card">
+      <div class="item item-divider item-icon-right">
+        {{'sale-summary.customer' | translate}}
+      </div>
+      <div class="item item-text-wrap" ng-if="saleSummaryCtrl.customer">
+        <div class="row">
+          <div class="col col-33"><b>{{'sale-summary.name' | translate}}</b></div>
+          <div class="col">{{saleSummaryCtrl.customer.name}}</div>
+        </div>
+        <div class="row">
+          <div class="col col-33"><b>{{'sale-summary.id' | translate}}</b></div>
+          <div class="col">{{saleSummaryCtrl.customer.idType.label}}: {{saleSummaryCtrl.customer.idValue}}</div>
+        </div>
+        <div class="row">
+          <div class="col col-33"><b>{{'sale-summary.address' | translate}}</b></div>
+          <div class="col">{{saleSummaryCtrl.customer.mainAddress.description}}</div>
+        </div>
+
+      </div>
+
+      <div class="item item-text-wrap" ng-if="!saleSummaryCtrl.customer">
+        <div class="row">
+          <span class="col">
+            <b>{{'sale-customer.noCustomer' | translate}}</b>
+          </span>
+        </div>
+      </div>
+
+    </div>
+
+
+    <div class="card" ng-if="saleSummaryCtrl.sale.items.length > 0">
+      <div class="item item-divider item-icon-right">
+        {{'sale-summary.items' | translate}}
+      </div>
+
+      <a class="item item-avatar" ng-repeat="item in saleSummaryCtrl.sale.items">
+        <dynamic-image url="item.image" mode="SMALL" class="no-radius" ng-if="item.image"></dynamic-image>
+        <img ng-src="main/assets/images/no-image.png" class="no-radius" ng-if="!item.image"/>
+
+        <p><b>{{item.description}}</b></p>
+
+        <div>
+          <p class="item-unit-price">{{item.quantity}} x {{item.unitPrice | currency}}</p>
+          <p class="item-price">{{item.total | currency}}</p>
+
+        </div>
+      </a>
+
+    </div>
+
+    <div class="card" ng-if="saleSummaryCtrl.sale.payments.length > 0">
+      <div class="item item-divider item-icon-right">
+        {{'sale-summary.payments' | translate}}
+      </div>
+
+      <a class="item item-avatar" ng-repeat="item in saleSummaryCtrl.sale.payments">
+        <dynamic-image url="item.image" mode="SMALL" class="no-radius" ng-if="item.image"></dynamic-image>
+        <img ng-src="main/assets/images/no-image.png" class="no-radius" ng-if="!item.image"/>
+
+        <p><b>{{item.paymentMethod.description}}</b></p>
+
+        <div>
+          <p class="item-unit-price">{{item.installments}} x {{item.installmentAmount | currency}}</p>
+          <p class="item-price">{{item.amount | currency}}</p>
+
+        </div>
+      </a>
+
+    </div>
+
+
+  </ion-content>
+
+
+</ion-view>
