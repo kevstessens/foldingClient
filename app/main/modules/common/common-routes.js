@@ -24,5 +24,14 @@ angular.module('main').config(function ($stateProvider) {
             cache: false,
             templateUrl: 'main/modules/common/components/writtings/writtings.html',
             controller: 'WrittingsCtrl as writtingsCtrl'
+        })
+        .state('common.writting', {
+            url: '/writting/:writtingId',
+            params: {
+                writtingId: null
+            },
+            cache: false,
+            templateUrl: 'main/modules/common/components/writting/writting.html',
+            controller: 'WrittingCtrl as writtingCtrl'
         });
 });

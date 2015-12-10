@@ -1,0 +1,21 @@
+<ion-view class="countdown-view">
+
+    <ion-nav-title>Cuenta regresiva</ion-nav-title>
+
+    <ion-content class="full-back"
+                 style="background: url('{{countdownCtrl.backPic}}') no-repeat center center fixed;">
+
+        <div class="card" style="background-color: rgba(255,255,255,0.6) !important;">
+            <div class="item item-text-wrap text-center" style="background-color: rgba(255,255,255,0.6) !important;">
+                <h2 style="font-size: 20px; margin-bottom:-15px">FALTAN</h2>
+
+                <h1 class="positive">{{countdownCtrl.countdown.days}} DIAS</h1>
+
+                <h2 style="font-size: 20px; margin-top:-15px">PARA VERTE DE NUEVO</h2>
+                <i class="icon ion-clock countdown-icon-back"></i>
+
+            </div>
+        </div>
+
+    </ion-content>
+</ion-view>

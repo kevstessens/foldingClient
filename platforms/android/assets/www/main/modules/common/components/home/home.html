@@ -1,61 +1,62 @@
 <ion-view class="home-view">
 
-  <ion-nav-title>{{'home.title' | translate}}</ion-nav-title>
+    <ion-nav-title>{{'home.title' | translate}}</ion-nav-title>
 
-  <ion-nav-buttons side="right">
-    <comparator-summary></comparator-summary>
-  </ion-nav-buttons>
+    <ion-content class="full-back"
+                 style="background: url('{{homeCtrl.homePic}}') no-repeat center center fixed;">
 
-  <ion-content ng-hide="homeCtrl.loading">
+        <div class="card" style="background-color: rgba(255,255,255,0.6) !important;">
+            <div class="item item-text-wrap text-center" style="background-color: rgba(255,255,255,0.6) !important;">
+                <h1 class="positive">HOY EXTRAÑO</h1>
 
-    <div class="card">
-      <div class="item item-divider item-text-wrap">
-        <h2 class="text-center">{{'home.mainCategories' | translate}}</h2>
-      </div>
-      <div class="flex-container wrap" ng-if="homeCtrl.categories.length > 0">
-        <div class="column" ng-repeat="cat in homeCtrl.categories">
-          <div class="card card-category whitesmoke" ng-click="homeCtrl.navigate(cat)">
-            <div class="item item-image item-icon-right">
-              <dynamic-image url="cat.image" class="item" mode="SMALL"
-                   ng-if="cat.image"></dynamic-image>
-              <avatar-initials diameter="60" model="cat.name"
-                               ng-if="!cat.image"></avatar-initials>
-              <i class="icon ion-close-round remove-icon" ng-click="homeCtrl.removeFromHome(cat.key)"
-                 onclick="event.stopPropagation()"></i>
+                <h2 style="font-size: 20px; margin-top:-15px">{{homeCtrl.homePhrase}}</h2>
+                <i class="icon ion-heart home-icon-back"></i>
 
             </div>
-            <p class="text-center truncate"> {{cat.name}} </p>
-          </div>
         </div>
-      </div>
 
-      <div ng-if="homeCtrl.categories.length <= 0">
-        <div class="big-icon flex-horizontal-center">
-          <span class="ion-university"></span>
+        <div class="card" style="background-color: rgba(255,255,255,0.6) !important;" ui-sref="common.writtings">
+            <div class="item item-text-wrap text-center" style="background-color: rgba(255,255,255,0.6) !important;" ng-if="homeCtrl.unread != 1">
+                <span style="margin-right: 10px;">Tenés</span><span class="badge badge-positive"
+                                                                    style="display: inline !important; top:initial; right: initial;">{{homeCtrl.unread}}</span>
+                <span style="margin-left: 30px;">escritos no leídos</span>
+            </div>
+
+            <div class="item item-text-wrap text-center" style="background-color: rgba(255,255,255,0.6) !important;" ng-if="homeCtrl.unread == 1">
+                <span style="margin-right: 10px;">Tenés</span><span class="badge badge-positive"
+                                                                    style="display: inline !important; top:initial; right: initial;">{{homeCtrl.unread}}</span>
+                <span style="margin-left: 30px;">escrito no leído</span>
+            </div>
+
+
         </div>
-        <div class="flex-horizontal-center text-center">
-          <span>{{'home.hint' | translate}}</span>
+
+        <div class="card" style="background-color: rgba(255,255,255,0.6) !important;" ui-sref="common.writtings">
+            <div class="item item-text-wrap text-center" style="background-color: rgba(255,255,255,0.6) !important;" ng-if="homeCtrl.disabled != 1">
+                <span style="margin-right: 10px;">Tenés</span><span class="badge badge-dark"
+                                                                    style="display: inline !important; top:initial; right: initial;">{{homeCtrl.disabled}}</span>
+                <span style="margin-left: 30px;">escritos bloqueados </span>
+            </div>
+
+            <div class="item item-text-wrap text-center" style="background-color: rgba(255,255,255,0.6) !important;" ng-if="homeCtrl.disabled == 1">
+                <span style="margin-right: 10px;">Tenés</span><span class="badge badge-dark"
+                                                                    style="display: inline !important; top:initial; right: initial;">{{homeCtrl.disabled}}</span>
+                <span style="margin-left: 30px;">escrito bloqueado </span>
+            </div>
         </div>
-      </div>
-    </div>
 
+        <div class="card" style="background-color: rgba(255,255,255,0.6) !important;">
+            <div class="item item-text-wrap text-center" style="background-color: rgba(255,255,255,0.6) !important;">
+                <h2 style="font-size: 20px; margin-bottom:-15px">FALTAN</h2>
 
+                <h1 class="positive">{{homeCtrl.countdown.days}} DIAS</h1>
 
-    <div class="row">
-      <div class="col">
-        <button class="button button-stable button-block" ng-click="homeCtrl.navigateToSearch()">
-          <i class="ion-android-search"></i> {{"home.search" | translate}}
-        </button>
-      </div>
-      <div class="col">
-        <button class="button button-balanced button-block" ng-click="homeCtrl.navigateToCart()">
-          <i class="ion-android-cart"></i> {{"home.cart" | translate}}
-        </button>
-      </div>
-    </div>
+                <h2 style="font-size: 20px; margin-top:-15px">PARA VERNOS DE NUEVO</h2>
+                <i class="icon ion-clock countdown-icon-back"></i>
 
+            </div>
+        </div>
 
-  </ion-content>
-  <qr-scanner-fab></qr-scanner-fab>
+    </ion-content>
 
 </ion-view>
