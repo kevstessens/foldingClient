@@ -19,8 +19,8 @@ angular.module('main').controller('HomeCtrl', function (Config, $http) {
     });
 
     $http.get(Config.ENV.SERVER_URL + '/home_pictures_random.json').then(function (response) {
-        self.homePic = "http://localhost:3000/" + response.data.picture.picture.url;
-    })
+        self.homePic = response.data.picture.picture.large.url;
+    });
 
     var someDate = new Date(2016, 1, 10);
 

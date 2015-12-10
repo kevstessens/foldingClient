@@ -1,5 +1,0 @@
-{
-  "SERVER_URL": "http://genesis.garba.com.ar",
-  "SETTINGS_KEY": "genesis-mobile-settings-prod",
-  "GRAYLOG_URL": "http://10.0.1.85:12666/gelf"
-}

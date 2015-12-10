@@ -5,7 +5,7 @@
     <ion-content>
         <div ng-repeat="writting in writtingsCtrl.writtings">
             <div class="card" ng-click="writtingsCtrl.navigateToWritting(writting.id)"
-                 style="background: url('http://localhost:3000/{{writting.picture.url}}'); background-size: 100% auto;  background-position: center center;" ng-if="writting.activated">
+                 style="background: url('{{writting.picture.medium.url}}'); background-size: 100% auto;  background-position: center center;" ng-if="writting.activated">
                 <div class="item item-text-wrap text-center"
                      style="background-color: rgba(255,255,255,0.7) !important;">
                     <h2 style="font-size: 23px; margin-bottom:-15px; font-weight: bold">{{writting.title}}</h2>
