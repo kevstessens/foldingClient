@@ -9,10 +9,6 @@ var $ = require('gulp-load-plugins')();
 
 var fixmyjs = require("gulp-fixmyjs");
 
-// all linting tasks
-gulp.task('linting', ['jsonlint']);
-gulp.task('linting-throw', ['jsonlint-throw']);
-
 
 var fixjs = function () {
   return function () {
@@ -35,5 +31,3 @@ var jsonlint = function (fail) {
       .pipe($.jsonlint.reporter(fail ? failReporter : undefined));
   };
 };
-gulp.task('jsonlint', jsonlint());
-gulp.task('jsonlint-throw', jsonlint(true));

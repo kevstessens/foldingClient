@@ -159,6 +159,9 @@ task cdvPrintProps << {
 }
 
 android {
+    lintOptions {
+        checkReleaseBuilds false
+    }
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'

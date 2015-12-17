@@ -1,9 +1,4 @@
 {
-"login.title": "Login",
-"login.user": "User",
-"login.password": "Password",
-"login.login": "Login",
-"login.invalidUserPass": "Invalid user/password",
 "countdown.title": "Home",
 "countdown.mainCategories": "Main Categories",
 "countdown.errorRemoving": "Could not remove",
@@ -46,5 +41,10 @@
 "writtings.hint": "Long press into a category to pin it here",
 "writtings.search": "Search",
 "writtings.cart": "Cart",
-"writtings.scan": "Scan Product"
+"writtings.scan": "Scan Product",
+"login.title": "Login",
+"login.user": "User",
+"login.password": "Password",
+"login.login": "Login",
+"login.invalidUserPass": "Invalid user/password"
 }
